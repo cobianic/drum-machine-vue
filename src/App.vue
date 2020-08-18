@@ -42,17 +42,6 @@
                 @change="volChange"
               />
             </b-row>
-            <!--            <b-row class="mx-2 mt-4">-->
-            <!--              <b-form-checkbox-->
-            <!--                v-model="loop"-->
-            <!--                switch-->
-            <!--                @change="loopChange"-->
-            <!--                size="lg"-->
-            <!--                :disabled="!isOn"-->
-            <!--              >-->
-            <!--                Loop-->
-            <!--              </b-form-checkbox>-->
-            <!--            </b-row>-->
           </b-card>
           <b-card class="my-4">
             <b-row class="justify-content-center">
