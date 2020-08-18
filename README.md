@@ -1,5 +1,13 @@
 # drum-machine-vue
 
+![Example](src/assets/example.png)
+
+## Tech stack
+
+* [Vue.js](https://vuejs.org/)
+* [Bootstrap Vue](https://bootstrap-vue.org/)
+
+
 ## Project setup
 ```
 npm install

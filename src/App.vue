@@ -16,26 +16,11 @@
               >
                 Power
               </b-form-checkbox>
-              <b-button @click="stop" variant="outline-info">
-                Stop
-              </b-button>
-              <div class="border rounded-lg px-4 py-2">
+              <div id="soundName" class="border rounded-lg px-4 py-2">
                 {{ lastPlayed }}
               </div>
             </b-row>
-            <b-row class="mx-2 mt-4">
-              <label for="volume">Volume</label>
-              <b-form-input
-                id="volume"
-                v-model="volume"
-                type="range"
-                min="0"
-                max="10"
-                @change="volChange"
-              >
-              </b-form-input>
-            </b-row>
-            <b-row class="mx-2 mt-4">
+            <b-row class="justify-content-between mx-2 mt-4">
               <b-form-checkbox
                 v-model="loop"
                 switch
@@ -45,7 +30,29 @@
               >
                 Loop
               </b-form-checkbox>
+              <b-button id="stop" @click="stop" variant="outline-info">
+                Stop
+              </b-button>
+              <b-form-input
+                id="volume"
+                v-model="volume"
+                type="range"
+                min="0"
+                max="10"
+                @change="volChange"
+              />
             </b-row>
+            <!--            <b-row class="mx-2 mt-4">-->
+            <!--              <b-form-checkbox-->
+            <!--                v-model="loop"-->
+            <!--                switch-->
+            <!--                @change="loopChange"-->
+            <!--                size="lg"-->
+            <!--                :disabled="!isOn"-->
+            <!--              >-->
+            <!--                Loop-->
+            <!--              </b-form-checkbox>-->
+            <!--            </b-row>-->
           </b-card>
           <b-card class="my-4">
             <b-row class="justify-content-center">
@@ -95,8 +102,7 @@ export default {
       this.audio = new Audio(url);
       if (this.isOn) {
         this.stop();
-
-        this.audio.volume = this.volume / 5;
+        this.audio.volume = this.volume / 10;
         this.audio.loop = this.loop;
         this.audio.play();
         this.currentAudio = this.audio;
@@ -105,7 +111,7 @@ export default {
     },
     volChange() {
       //while the sound is on loop and if volume is modified
-      this.audio.volume = this.volume / 5;
+      this.audio.volume = this.volume / 10;
     },
     stop() {
       try {
@@ -129,10 +135,6 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  background: lightblue;
-  font-family: sans-serif;
-}
 header {
   text-align: center;
 }
@@ -159,7 +161,21 @@ header {
     cursor: not-allowed;
   }
 }
-.custom-control .custom-control-input:checked::after {
-  background-color: green !important;
+
+#soundName {
+  font-size: 1.25rem;
+}
+
+#stop {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  font-size: 1.25rem;
+}
+
+#volume {
+  width: 35%;
 }
 </style>
